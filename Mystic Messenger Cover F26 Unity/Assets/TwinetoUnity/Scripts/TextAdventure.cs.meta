@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3f1872916113e4f869b7d742b9fe2081
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 295099
+  packageName: Simple Twine Dialogue Importer for Unity
+  packageVersion: 1.1
+  assetPath: Assets/TwinetoUnity/Scripts/TextAdventure.cs
+  uploadId: 842250

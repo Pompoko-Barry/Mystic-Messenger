@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b02d1dac596de4223b17a421714f5d87
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 295099
+  packageName: Simple Twine Dialogue Importer for Unity
+  packageVersion: 1.1
+  assetPath: Assets/StreamingAssets/ExampleTwee.twee
+  uploadId: 842250

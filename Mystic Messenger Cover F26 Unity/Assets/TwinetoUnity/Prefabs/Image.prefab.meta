@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e10d7161eef0f478fa69c6c83a8c3b90
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 295099
+  packageName: Simple Twine Dialogue Importer for Unity
+  packageVersion: 1.1
+  assetPath: Assets/TwinetoUnity/Prefabs/Image.prefab
+  uploadId: 842250
