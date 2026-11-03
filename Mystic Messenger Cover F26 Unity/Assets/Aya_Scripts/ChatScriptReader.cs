@@ -183,27 +183,45 @@ namespace SimpleTwineDialogue
         /// <summary>
         /// Turns a passage body into chat events, ordered by when they should appear.
         /// </summary>
+        // The same patterns, anchored with \G so they only match exactly where the scanner is.
+        static readonly Regex SayAt = new Regex(
+            @"\G\(\$say:\s*\$(?<who>\w+)\s*,\s*""(?<text>[^""]*)""\s*\)");
+        static readonly Regex NoticeAt = new Regex(
+            @"\G\$systemnotif\s*\[(?<text>[^\[\]]*)\]");
+        static readonly Regex AfterHookAt = new Regex(
+            @"\G\(after:\s*(?<n>[\d.]+)\s*(?<unit>ms|s)\s*\)\s*\[");
+
+        static float Seconds(Match m)
+        {
+            float n = float.Parse(m.Groups["n"].Value, CultureInfo.InvariantCulture);
+            return m.Groups["unit"].Value == "ms" ? n / 1000f : n;
+        }
+
+        /// <summary>
+        /// Turns a passage body into chat events, ordered by when they should appear.
+        /// Reads the passage the way Harlowe does: a message may be split over several
+        /// lines, and its delay comes from the (after:) hook it sits inside.
+        /// </summary>
         public static List<ChatEvent> GetEvents(
             TweeParser.Passage passage,
             Dictionary<string, ChatCharacter> characters,
             string playerName)
         {
             var events = new List<ChatEvent>();
+            string body = passage.Body;
 
-            foreach (var line in passage.Body.Split('\n'))
+            // One entry per open [ hook: its delay in seconds (0 for a plain hook).
+            // Nested (after:) delays add up, as in Harlowe.
+            var openHooks = new List<float>();
+
+            int i = 0;
+            while (i < body.Length)
             {
-                float delay = 0f;
-                var after = AfterRegex.Match(line);
-                if (after.Success)
-                {
-                    delay = float.Parse(after.Groups["n"].Value, CultureInfo.InvariantCulture);
-                    if (after.Groups["unit"].Value == "ms")
-                        delay /= 1000f;
-                }
+                Match m;
 
-                foreach (Match say in SayRegex.Matches(line))
+                if ((m = SayAt.Match(body, i)).Success)
                 {
-                    var who = say.Groups["who"].Value;
+                    var who = m.Groups["who"].Value;
                     if (!characters.ContainsKey(who))
                         Debug.LogWarning($"ChatScriptReader: unknown speaker ${who} in passage '{passage.Title}'");
 
@@ -211,25 +229,44 @@ namespace SimpleTwineDialogue
                     {
                         Type = ChatEventType.Message,
                         SpeakerKey = who,
-                        Text = ResolveText(say.Groups["text"].Value, characters, playerName),
-                        Delay = delay
+                        Text = ResolveText(Collapse(m.Groups["text"].Value), characters, playerName),
+                        Delay = openHooks.Sum()
                     });
+                    i += m.Length;
+                    continue;
                 }
 
-                foreach (Match notice in NoticeRegex.Matches(line))
+                if ((m = NoticeAt.Match(body, i)).Success)
                 {
                     events.Add(new ChatEvent
                     {
                         Type = ChatEventType.SystemNotice,
-                        Text = ResolveText(notice.Groups["text"].Value, characters, playerName),
-                        Delay = delay
+                        Text = ResolveText(Collapse(m.Groups["text"].Value), characters, playerName),
+                        Delay = openHooks.Sum()
                     });
+                    i += m.Length;
+                    continue;
                 }
+
+                if ((m = AfterHookAt.Match(body, i)).Success)
+                {
+                    openHooks.Add(Seconds(m)); // this hook opens with a delay
+                    i += m.Length;
+                    continue;
+                }
+
+                char c = body[i];
+                if (c == '[')
+                    openHooks.Add(0f);         // an ordinary hook
+                else if (c == ']' && openHooks.Count > 0)
+                    openHooks.RemoveAt(openHooks.Count - 1);
+                i++;
             }
 
-            // A passage with no chat lines (like a "Booting up..." splash) shows its
+            // A passage with no chat code at all (like a "Booting up..." splash) shows its
             // plain text as system notices instead, so it isn't blank in Unity.
-            if (events.Count == 0)
+            bool hasChatCode = body.Contains("$say") || body.Contains("$systemnotif");
+            if (events.Count == 0 && !hasChatCode)
             {
                 foreach (var text in GetLooseText(passage))
                 {
@@ -304,6 +341,12 @@ namespace SimpleTwineDialogue
             return lines;
         }
 
+        /// <summary>Turns line breaks and runs of spaces into single spaces.</summary>
+        static string Collapse(string text)
+        {
+            return Regex.Replace(text, @"\s+", " ").Trim();
+        }
+
         /// <summary>Fills in (print: $zen's name), (print: $name) and $name.</summary>
         public static string ResolveText(
             string text,
@@ -314,7 +357,51 @@ namespace SimpleTwineDialogue
                 characters.TryGetValue(m.Groups["key"].Value, out var c) ? c.Name : m.Value);
             text = PrintPlayerNameRegex.Replace(text, playerName ?? "");
             text = BarePlayerNameRegex.Replace(text, playerName ?? "");
-            return text.Trim();
+            return ConvertMarkup(text).Trim();
+        }
+
+        // (text-colour: #14ff30)[words]  -- also (text-color:), (colour:), (color:), quoted or not
+        static readonly Regex ColourHookRegex = new Regex(
+            @"\((?:text-colou?r|colou?r):\s*""?(?<c>#?[\w]+)""?\s*\)\s*\[(?<t>[^\[\]]*)\]");
+
+        // any other macro followed by a hook, e.g. (text-style: "shudder")[words]
+        static readonly Regex OtherHookRegex = new Regex(
+            @"\((?!(?:text-colou?r|colou?r):)[\w-]+:(?:[^()""]|""[^""]*"")*\)\s*\[(?<t>[^\[\]]*)\]");
+
+        static readonly Regex BoldRegex = new Regex(@"(?:\*\*|'')(?<t>.+?)(?:\*\*|'')");
+        static readonly Regex ItalicRegex = new Regex(@"(?:(?<!/)//|\*)(?<t>[^*]+?)(?://|\*)");
+
+        /// <summary>
+        /// Turns Harlowe styling inside message text into TextMeshPro rich text:
+        /// (text-colour: #14ff30)[hi] becomes colored text, **bold** and ''bold'' become bold,
+        /// //italic// and *italic* become italic. Any other macro is removed, so no Twine code shows.
+        /// </summary>
+        public static string ConvertMarkup(string text)
+        {
+            // Work from the innermost hooks outward: colored hooks become color tags, and any
+            // other styled hook, like (text-style: "shudder")[words], keeps just its words.
+            string before;
+            do
+            {
+                before = text;
+                text = ColourHookRegex.Replace(text, m => $"<color={m.Groups["c"].Value}>{m.Groups["t"].Value}</color>");
+                text = OtherHookRegex.Replace(text, m => m.Groups["t"].Value);
+            } while (text != before);
+
+            // Remove any other macro calls, such as (text-style: "shudder") or (font: ...).
+            do
+            {
+                before = text;
+                text = AnyMacroRegex.Replace(text, "");
+            } while (text != before);
+
+            // Their hooks' brackets are left behind; drop them but keep the words.
+            text = text.Replace("[=", "").Replace("[", "").Replace("]", "");
+
+            text = BoldRegex.Replace(text, m => $"<b>{m.Groups["t"].Value}</b>");
+            text = ItalicRegex.Replace(text, m => $"<i>{m.Groups["t"].Value}</i>");
+
+            return Regex.Replace(text, @"\s{2,}", " ");
         }
     }
 }

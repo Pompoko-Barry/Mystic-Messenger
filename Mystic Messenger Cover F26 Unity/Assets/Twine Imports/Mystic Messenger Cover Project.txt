@@ -416,11 +416,11 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 "Oh yeah? I'm glad!")]
 (after: 3s)[($say: $wesker, 
 "How dissapointing (print: $name). To relate to the likes of Zen MysticMessenger...")]
-(after: 6s)[($say: $wesker, 
+(after: 6s)[($say: $zen, 
 "Ignore him (print: $name). He's just a pompous lame boomer who thinks he is the shit, but actually he is just shit.")]
-(after: 8s)[($say: $wesker, 
+(after: 8s)[($say: $zen, 
 "If he ever makes you sad, come to me right away!")]
-(after: 10s)[($say: $wesker, 
+(after: 10s)[($say: $zen, 
 "I'll beat that jerk up for you.")]
 (after: 13s)[($say: $wesker, 
 "I'd like to see you try.")]
