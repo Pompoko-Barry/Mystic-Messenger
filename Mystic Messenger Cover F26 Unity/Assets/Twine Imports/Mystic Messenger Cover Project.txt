@@ -105,13 +105,9 @@ What is your name?
 
 
 :: Give wesker your personal info. {"position":"800,1250","size":"100,100"}
-//You gave wesker your personal information. 
-//
-He came to your house, and found out you lied about everything.
+[[You gave wesker your personal information.]]
+(set: $gameState to "BadEndingWesker")
 
-Wesker culled you.
-
-Lying is bad!
 
 
 :: Go to homescreen for the first time. {"position":"1250,1950","size":"100,100"}
@@ -376,6 +372,15 @@ What is your name?
 (after: 46s) [(b4r:"solid")+(b4r-colour:white)[[You guys are funny lol]]		(b4r:"solid")+(b4r-colour:white)[[What is going on]]]
 
 
+:: No, Wesker. It was a joke! {"position":"675,1525","size":"100,100"}
+($say: $wesker, "Awwwh. Is the little mouse regretting their foolish actions now?")
+($say: $narrator, "Wesker softly wipes some of the sweat from your brow")
+($say: $wesker, "Stress is bad for the skin, you know?")
+($say: $wesker, "Not that you have to worry too much about this, dear.")
+($say: $wesker, "You'll soon be free of all this anyway.")
+[[Wesker swiftly ended your mortal existence.]]
+
+
 :: No, Zen. Wesker only speaks the truth. {"position":"875,2750","size":"100,100"}
  ($say: $player, "No, Zen. Wesker only speaks the truth.
 ")
@@ -453,6 +458,11 @@ What is your name?
 
 
 :: Startup [startup] {"position":"475,325","size":"100,100"}
+(set: $narrator to (dm: 
+"name", "",
+"color", "ffffff"
+))
+
 (set: $zen to (dm:
 "name", "Zen MysticMessenger",
 "color", "#cf0e6b",
@@ -597,6 +607,11 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 37s) [(b4r:"solid")+(b4r-colour:white)[[Hi Shinji -- was hoping you'd come online.]]		(b4r:"solid")+(b4r-colour:white)[[Lol, poor wesky lol]]]
 
 
+:: Wesker swiftly ended your mortal existence. {"position":"825,1625","size":"100,100"}
+($say: $narrator, "BAD END (you lied to Wesker)") 
+
+
+
 :: Wesker, I am with you. These idiots mean nothing. {"position":"850,3125","size":"100,100"}
  ($say: $player, "Wesker, I am with you. These idiots mean nothing.
 ")
@@ -711,6 +726,31 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 
 
 (after: 16s) [(b4r:"solid")+(b4r-colour:white)[[Thanks Zen MysticMessenger!]]		(b4r:"solid")+(b4r-colour:white)[[lolol I want to see Zen get beat up by Wesker lol]]]
+
+
+:: You don't scare me, Wesker {"position":"925,1500","size":"100,100"}
+($say: $narrator, "Wesker grimaces") 
+($say: $wesker, "You remind me of someone I used to know...")
+($say: $wesker, "Someone that I HATE being reminded of.")
+($say: $wesker, "You've served your purpose, farewell new friend.")
+[[Wesker swiftly ended your mortal existence.]]
+
+
+:: You gave wesker your personal information. {"position":"800,1375","size":"100,100"}
+($say: $narrator, "Wesker showed up way quicker than you expected.") 
+($say: $narrator, "He sizes you up with a steely glance.") 
+($say: $narrator, "Wesker is on to you. He knows you lied -- about everything.") 
+($say: $narrator, "What have you gotten yourself into? It was just a joke, wasn't it? Why is he staring at you like that?") 
+($say: $narrator, "You wait in anticipation to see what Wesker does next.") 
+($say: $narrator, "Why...Just -- why?! Why would you do something so crazy?") 
+($say: $narrator, "This isn't no romantic fairytale...This is Albert Wesker you're messing with.") 
+($say: $narrator, "A cold-hearted biohazard.") 
+($say: $wesker, "Well, then -- what did you expect?")
+($say: $wesker, "Did you really think you could outwit me?")
+
+[[No, Wesker. It was a joke!]] [[You don't scare me, Wesker]]
+
+
 
 
 :: You guys are funny lol {"position":"1200,1800","size":"100,100"}

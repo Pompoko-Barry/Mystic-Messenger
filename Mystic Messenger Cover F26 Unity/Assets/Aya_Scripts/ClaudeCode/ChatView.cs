@@ -61,6 +61,9 @@ namespace SimpleTwineDialogue
         Dictionary<string, TweeParser.Passage> passages;
         Dictionary<string, ChatCharacter> characters;
 
+        public Dictionary<string, TweeParser.Passage> Passages => passages;
+        public Dictionary<string, ChatCharacter> Characters => characters;
+
         void Awake()
         {
             // Read the whole story once, and the characters from the "startup" passage.

@@ -87,6 +87,16 @@ public class GameStateDebugger : MonoBehaviour
                     ? stateManager.secondChatFirstPassage
                     : secondChatPassage);
                 break;
+                        case GameState.ThirdChat:
+                stateManager.SetState(GameState.ThirdChat);
+                chatView.PlayFrom(stateManager.thirdChatFirstPassage);
+                break;
+
+            default:
+                // Endings and any future states: stop the chat and let GameStateManager handle it.
+                chatView.StopAllCoroutines();
+                stateManager.SetState(state);
+                break;
 
             case GameState.HomeAfterIntro:
             case GameState.HomeAfterSecondChat:
