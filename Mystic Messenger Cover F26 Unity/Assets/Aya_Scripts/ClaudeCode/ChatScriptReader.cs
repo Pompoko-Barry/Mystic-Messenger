@@ -129,6 +129,9 @@ namespace SimpleTwineDialogue
         static readonly Regex PrintPlayerNameRegex = new Regex(@"\(print:\s*\$name\s*\)");
         static readonly Regex BarePlayerNameRegex = new Regex(@"\$name\b");
 
+        // looking for state names (set: $gameState) and returns a string or null
+        static readonly Regex GameStateRegex = new Regex(@"\(set:\s*\$gameState\s+to\s+""(?<state>\w+)""\s*\)");
+
         /// <summary>
         /// Finds every passage tagged "startup" and reads the character datamaps in it.
         /// Only datamaps with a "name" entry are treated as characters.
@@ -301,6 +304,19 @@ namespace SimpleTwineDialogue
             var plain = GotoRegex.Match(passage.Body);
             if (plain.Success)
                 return new AutoGoto { Target = plain.Groups["target"].Value.Trim(), Delay = 0f };
+
+            return null;
+        }
+
+        /// <summary>
+        /// Finds (set: $gameState to "SomeState") in the passage.
+        /// Returns the state's name, or null if the passage doesn't change the state.
+        /// </summary>
+        public static string GetStateChange(TweeParser.Passage passage)
+        {
+            var match = GameStateRegex.Match(passage.Body);
+            if (match.Success)
+                return match.Groups["state"].Value;
 
             return null;
         }

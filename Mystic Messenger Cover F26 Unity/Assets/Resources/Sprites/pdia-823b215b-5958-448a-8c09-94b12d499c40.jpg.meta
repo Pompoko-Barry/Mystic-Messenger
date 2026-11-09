@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bb8ee8df5636d4df49a82da889f2b897
+guid: b2fa19cf8a9b34d05b4fb4e7bfdabd10
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 802681833748803006
-    second: magic_05_0
+      213: -358386208035987787
+    second: pdia-823b215b-5958-448a-8c09-94b12d499c40_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: magic_05_0
+      name: pdia-823b215b-5958-448a-8c09-94b12d499c40_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 11
-        width: 482
-        height: 501
+        x: 0
+        y: 0
+        width: 800
+        height: 980
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebda14000e2b32b00800000000000000
-      internalID: 802681833748803006
+      spriteID: 5be9d9184a1c60bf0800000000000000
+      internalID: -358386208035987787
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      magic_05_0: 802681833748803006
+      pdia-823b215b-5958-448a-8c09-94b12d499c40_0: -358386208035987787
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

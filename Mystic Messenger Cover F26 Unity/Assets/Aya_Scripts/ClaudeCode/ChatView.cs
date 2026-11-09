@@ -51,6 +51,13 @@ namespace SimpleTwineDialogue
         public Transform choiceContainer;
         public Button choiceButtonPrefab;
 
+        [Header("Game state (optional)")]
+        [Tooltip("Receives (set: $gameState to \"...\") from Twine passages.")]
+        public GameStateManager stateManager;
+
+        [Tooltip("Seconds to wait after a passage's last message before the state changes.")]
+        public float stateDelay = 2f;
+
         Dictionary<string, TweeParser.Passage> passages;
         Dictionary<string, ChatCharacter> characters;
 
@@ -110,6 +117,19 @@ namespace SimpleTwineDialogue
             StartCoroutine(PlayPassage(next));
         }
 
+        /// <summary>
+        /// Clears the chat and plays a passage. Used by GameStateManager to start the second chat.
+        /// </summary>
+        public void PlayFrom(string title)
+        {
+            StopAllCoroutines();
+            ClearChoices();
+            foreach (Transform child in messageContainer)
+                Destroy(child.gameObject);
+
+            StartCoroutine(PlayPassage(title));
+        }
+
         void ShowNameScreen()
         {
             if (nameScreen == null)
@@ -128,12 +148,13 @@ namespace SimpleTwineDialogue
 
         IEnumerator PlayPassage(string title)
         {
+            title = title.Trim();   // ignore accidental spaces at the start or end
             if (!passages.TryGetValue(title, out var passage))
             {
                 Debug.LogError(
-    $"ChatView: no passage named '{title}' in '{tweeFile.name}'. " +
-    $"Check spelling, spaces and '...' vs '…'.\n" +
-    $"Passages found ({passages.Count}): " + string.Join(" | ", passages.Keys));
+                    $"ChatView: no passage named '{title}' in '{tweeFile.name}'. " +
+                    $"Check spelling, spaces and '...' vs '…'.\n" +
+                    $"Passages found ({passages.Count}): " + string.Join(" | ", passages.Keys));
                 yield break;
             }
 
@@ -159,6 +180,15 @@ namespace SimpleTwineDialogue
                     elapsed = e.Delay;
                 }
                 ShowEvent(e);
+            }
+
+            // (set: $gameState to "HomeAfterIntro") hands control to the GameStateManager.
+            var newState = ChatScriptReader.GetStateChange(passage);
+            if (newState != null && stateManager != null)
+            {
+                yield return new WaitForSeconds(stateDelay); // let the last message be read
+                stateManager.SetStateFromTwine(newState);
+                yield break;
             }
 
             // (live: 5s)[(goto: "Next")] moves on by itself, like in Twine.

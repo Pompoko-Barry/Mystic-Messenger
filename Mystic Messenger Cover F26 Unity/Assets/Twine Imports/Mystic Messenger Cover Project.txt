@@ -48,12 +48,43 @@ Mystic Messenger Cover Project
 (after: 39s) [(b4r:"solid")+(b4r-colour:white)[[No, it was just a joke. I am not some crazy spy.]]		(b4r:"solid")+(b4r-colour:white)[[Give wesker your personal info.]]]
 
 
+:: Chat 2 Start {"position":"1250,2200","size":"100,100"}
+(after: 1s) [$systemnotif[(print: $zen's name) has entered the chatroom.]]
+(after: 2s) [$systemnotif[(print: $name) has entered the chatroom.]]
+(after: 4s)[($say: $zen, 
+"Hi (print: $name):)")]
+(after: 5s)[($say: $zen, 
+"How has your day been?")]
+(after: 7s)[($say: $zen, 
+"Did you eat anything good 2day lol?")]
+
+(after: 9s) [(b4r:"solid")+(b4r-colour:white)[[Yeah, I ate my favorite snack today!]]		(b4r:"solid")+(b4r-colour:white)[[Haven't eaten yet, today lol]]]
+
+
 :: Choose to input name. {"position":"875,575","size":"100,100"}
 What is your name?
 
 (b4r: "solid") + (corner-radius: 6) + (css: "padding: 0.5em; display: inline-block;")[(input: bind $name, "")]
 
 [[Confirm Name->Logging in...]]
+
+
+:: Close the chatroom. {"position":"1575,3800","size":"100,100"}
+(set: $gameState to "HomeAfterSecondChat")
+
+
+:: Cya, Shinjiro. {"position":"1650,3625","size":"100,100"}
+ ($say: $player, "Cya, Shinjiro.
+ ")
+   (after: 2s)[($say: $shinji, 
+"Cya (print: $name):)")]
+
+  (after: 4s) [$systemnotif[(print: $zen's name) has left the chatroom.]]
+   (after: 6s) [$systemnotif[(print: $shinji's name) has left the chatroom.]]
+
+
+(after: 7s) [(b4r:"solid")+(b4r-colour:white)[[Close the chatroom.]]]
+
 
 
 :: First Messages(start) {"position":"1025,725","size":"100,100"}
@@ -74,6 +105,8 @@ What is your name?
 
 
 :: Give wesker your personal info. {"position":"800,1250","size":"100,100"}
+//You gave wesker your personal information. 
+//
 He came to your house, and found out you lied about everything.
 
 Wesker culled you.
@@ -81,12 +114,52 @@ Wesker culled you.
 Lying is bad!
 
 
+:: Go to homescreen for the first time. {"position":"1250,1950","size":"100,100"}
+(set: $gameState to "HomeAfterIntro")
+
+
+:: Haven't eaten yet, today lol {"position":"1375,2350","size":"100,100"}
+ ($say: $player, "Haven't eaten yet, today lol!")
+ (after: 2s)[($say: $zen, 
+"You should eat something soon :(")]
+ (after: 4s)[($say: $zen, 
+"Don't skip meals!")]
+ (after: 6s)[($say: $zen, 
+"Eat when you're hungry, stop when you're full👍")]
+ (after: 8s)[($say: $zen, 
+"Even if you're trying to lose weight!")]
+ (after: 12s)[($say: $zen, 
+"No matter how crazy life gets, you gotta take care of your health lol👍👍")]
+
+(after: 13s) [$systemnotif[(print: $shinji's name) has entered the chatroom.]]
+
+(after: 15s)[($say: $shinji, 
+"Zen, don't you smoke cigs for breakfast, lunch, and dinner?")]
+
+(after: 17s) [(b4r:"solid")+(b4r-colour:white)[[Hi Shinji -- was hoping you'd come online.]]		(b4r:"solid")+(b4r-colour:white)[[Zen does that?? That sounds worrisome...]]]
+
+
+:: Hello Wesker. Good to see you here. {"position":"1000,2600","size":"100,100"}
+ ($say: $player, "Hello Wesker. Good to see you here.
+")
+(after: 2s)[($say: $wesker, 
+"Ah -- yes. (print: $name) it is good to 'see' you too.")]
+(after: 5s) [($say: $wesker, 
+"I hope being with Zen has not rotted your senses too much.")]
+(after: 7s) [($say: $zen, 
+"Yeah, love you too, Wesker.")]
+(after: 9s) [($say: $zen, 
+"Gosh, you are such a JERK!")]
+(after: 12s) [(b4r:"solid")+(b4r-colour:white)[[Wesker is being a little mean...]]		(b4r:"solid")+(b4r-colour:white)[[No, Zen. Wesker only speaks the truth.]]]
+
+
+
 :: Hello! {"position":"1025,850","size":"100,100"}
 ($say: $player, "Hello!")
 (after: 2s)[($say: $zen, 
 "Oh, they are kinda cute lol")]
 (after: 3s)[($say: $zen, 
-"I hope I am their type. Cuffing season is coming up soon.")]
+"I hope I'm their type. Cuffing season is coming up soon.")]
 (after: 6s)[($say: $wesker, 
 "It's depressing to think that this beast of a creature and I are of the same species.")]
 (after: 7s)[($say: $wesker, 
@@ -104,6 +177,40 @@ Lying is bad!
 (after: 23s)[($say: $shinji, 
 "Before they get too carried away again, we need to know--who are you?")]
 (after: 26s) [(b4r:"solid")+(b4r-colour:white)[[An international super spy here to take over the world.]]		(b4r:"solid")+(b4r-colour:white)[[No one special, or important. At least not yet, hopefully.]]]
+
+
+:: Hi Shinji -- was hoping you'd come online. {"position":"1450,2800","size":"100,100"}
+ ($say: $player, "Hi Shinji -- was hoping you'd come online.
+ ")
+  (after: 2s)[($say: $shinji, 
+"Hi (print: $name)")]
+  (after: 5s)[($say: $shinji, 
+"Was hoping to talk to you, also :)")]
+  (after: 7s)[($say: $shinji, 
+"Thanks for thinking about me :)")]
+  (after: 10s)[($say: $shinji, 
+"Just got back from the hospital")]
+  (after: 12s)[($say: $shinji, 
+"Exhausted.")]
+  (after: 14s)[($say: $zen, 
+"Everything looking good, still?")]
+  (after: 16s)[($say: $shinji, 
+"Yeah.")]
+(after: 18s)[$systemnotif[(print: $weskers's name) has entered the chatroom.]]
+  (after: 19s)[($say: $wesker, 
+"A shame.")]
+(after: 21s)[$systemnotif[(print: $weskers's name) has left the chatroom.]]
+  (after: 24s)[($say: $zen, 
+"Man, Wesker is so full of it.")]
+  (after: 24s)[($say: $zen, 
+"Tryna act tough and like he hates us.")]
+  (after: 27s)[($say: $zen, 
+"Even though he still hasn't cut off contact, and sends a ChrisTmas card every year lol")]
+  (after: 30s)[($say: $shinji, 
+"Wesker 'leaving' the groupchat but still reading from his notification is funny")]
+  (after: 33s)[($say: $shinji, 
+"4/5 days I absolutely hate him, but he's okay sometimes")]
+(after: 37s) [(b4r:"solid")+(b4r-colour:white)[[I think Wesker is a little cool.]]		(b4r:"solid")+(b4r-colour:white)[[Lol, poor wesky lol]]]
 
 
 :: Hi lolol {"position":"1150,850","size":"100,100"}
@@ -139,6 +246,31 @@ Lying is bad!
 (after: 42s) [(b4r:"solid")+(b4r-colour:white)[[An international super spy here to take over the world.]]		(b4r:"solid")+(b4r-colour:white)[[No one special, or important. At least not yet, hopefully.]]]
 
 
+:: I think Wesker is a little cool. {"position":"1525,3150","size":"100,100"}
+ ($say: $player, "I think Wesker is a little cool.
+ ")
+   (after: 2s)[($say: $shinji, 
+"He has some fans, unironically.")]
+   (after: 5s)[($say: $shinji, 
+"I think he went a little cuckoo after Chris left him.")]
+   (after: 8s)[($say: $shinji, 
+"And he killed his dad.")]
+  (after: 9s) [$systemnotif[(print: $wesker's name) has entered the chatroom.]]
+     (after: 10s)[($say: $wesker, 
+"Get your facts straight, before spouting nonsense, Shinjiro.")]
+    (after: 13s)[($say: $wesker, 
+"I left that idiotic meathead.")]
+    (after: 15s)[($say: $wesker, 
+"Chris can't even read.")]
+  (after: 19s)[($say: $shinji, 
+"Are we gaming this weekend?")]
+(after: 22s) [(b4r:"solid")+(b4r-colour:white)[[gaming?]]]
+
+
+
+
+
+
 :: Insert Name [nameinput] {"position":"700,450","size":"100,100"}
 What is your name?
 (b4r:"solid")+(b4r-colour:white)[[Choose to input name.]]		(b4r:"solid")+(b4r-colour:white)[[Refuse to input name.]]
@@ -150,6 +282,39 @@ What is your name?
 (align:"=><=")+(box:"X=")[=
  (text-style:"fade-in-out")[*...Logging in for the first time...* ]
  (live: 5s)[(goto: "First Messages(start)") (stop:)]
+
+
+:: Lol, poor wesky lol {"position":"1300,3000","size":"100,100"}
+ ($say: $player, "Lol, poor wesky lol
+ ")
+ (after: 3s) [$systemnotif[(print: $wesker's name) has entered the chatroom.]]
+ (after: 5s)[($say: $wesker, 
+"Do not call me that.")]
+ (after: 8s)[($say: $wesker, 
+"How dare you underdeveloped cretins mock me?")]
+ (after: 10s)[($say: $wesker, 
+"Me?")]
+ (after: 11s)[($say: $wesker, 
+"Doctrr")]
+ (after: 12s)[($say: $wesker, 
+"Albert")]
+ (after: 13s)[($say: $wesker, 
+"Wesker")]
+ (after: 15s)[($say: $wesker, 
+"An ascended human, the one who wields the right to be a god.")]
+(after: 18s)[($say: $wesker, 
+"And I didn't leave because it hurt my feelings")]
+ (after: 20s)[($say: $zen, 
+"lol he had a typo")]
+ (after: 22s)[($say: $shinji, 
+"more than one")]
+ (after: 23s)[($say: $shinji, 
+"lol")]
+ (after: 26s)[($say: $zen, 
+"his feelings are so hurt, he forgot how to spell lol")]
+ (after: 27s)[($say: $shinji, 
+"lol")]
+(after: 30s) [(b4r:"solid")+(b4r-colour:white)[[lol]]		(b4r:"solid")+(b4r-colour:white)[[Wesker, I am with you. These idiots mean nothing.]]]
 
 
 :: No one special, or important. At least not yet, hopefully. {"position":"1125,1075","size":"100,100"}
@@ -209,6 +374,18 @@ What is your name?
 (after: 35s)[($say: $zen, 
 "shutup weskie-poo")]
 (after: 46s) [(b4r:"solid")+(b4r-colour:white)[[You guys are funny lol]]		(b4r:"solid")+(b4r-colour:white)[[What is going on]]]
+
+
+:: No, Zen. Wesker only speaks the truth. {"position":"875,2750","size":"100,100"}
+ ($say: $player, "No, Zen. Wesker only speaks the truth.
+")
+(after: 2s)[($say: $wesker, 
+"Yes, indeed.")]
+(after: 4s)[($say: $wesker, 
+"(print: $name) I am proud of you.")]
+
+(after: 30s) [(b4r:"solid")+(b4r-colour:white)[[lol]]		(b4r:"solid")+(b4r-colour:white)[[Wesker, I am with you. These idiots mean nothing.]]]
+
 
 
 :: No, it was just a joke. I am not some crazy spy. {"position":"975,1225","size":"100,100"}
@@ -329,6 +506,8 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (output:)[(print: '<div class="msg ' + _w's side + '">' + _img + '<div class="msg-body"><div class="msg-name" style="color: ' + _w's color + '">' + _w's name + '</div><div class="bubble">' + _text + '</div></div></div>')]
 ]))
 
+(set: $gameState to "IntroChat")
+
 
 :: Still, refuse to input name. {"position":"550,700","size":"100,100"}
 ($say: $system, 
@@ -383,6 +562,89 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 46s) [(b4r:"solid")+(b4r-colour:white)[[You guys are funny lol]]		(b4r:"solid")+(b4r-colour:white)[[What is going on]]]
 
 
+:: Wesker is being a little mean... {"position":"1025,2750","size":"100,100"}
+ ($say: $player, "Wesker is being a little mean....
+")
+(after: 3s)[($say: $zen,  
+"Ugh, honestly -- I think he is just envious of me.")]
+ (after: 6s)[($say: $zen,  
+"Like he has to drug himself and take all these supplements to look good...")] 
+ (after: 10s)[($say: $zen,  
+"But I was naturally born beautiful <3")]
+ (after: 13s)[($say: $zen,  
+"Unlike walking biohazard, Albert Wesker, who just injects himself with random crap and calls it a day")]
+ (after: 17s)[($say: $zen,  
+"Like he actually died and came back to life before, since he wanted to change himself so bad")]
+ (after: 19s)[($say: $zen,  
+"Sounds like an insecure bastard to me!")]
+ (after: 21s)[($say: $wesker,  
+"The nonsensical blabber of a dimwitted fool such as you will never hurt me, Zen.")]
+ (after: 23s)[($say: $wesker,  
+"I am a perfect specimen.")]
+ (after: 25s)[($say: $wesker,  
+"So capable, that I have the right to be a god.")]
+ (after: 26s)[($say: $wesker,  
+"The right to be a god...")]
+ (after: 29s)[($say: $zen,  
+"Old man incel")]
+ (after: 30s)[($say: $zen,  
+"shut up")]
+(after: 32s)[$systemnotif[(print: $weskers's name) has left the chatroom.]]
+ (after: 34s)[($say: $zen,  
+"'your words will never hurt me'")]
+(after: 35s) [$systemnotif[(print: $shinji's name) has entered the chatroom.]]
+(after: 37s) [(b4r:"solid")+(b4r-colour:white)[[Hi Shinji -- was hoping you'd come online.]]		(b4r:"solid")+(b4r-colour:white)[[Lol, poor wesky lol]]]
+
+
+:: Wesker, I am with you. These idiots mean nothing. {"position":"850,3125","size":"100,100"}
+ ($say: $player, "Wesker, I am with you. These idiots mean nothing.
+")
+(after: 2s)[($say: $wesker, 
+"Hmm...")]
+(after: 4s)[($say: $wesker, 
+"(print: $name).")]
+(after: 6s)[($say: $wesker, 
+"You are different.")]
+(after: 8s)[($say: $wesker, 
+"You are smart.")]
+(after: 10s)[($say: $wesker, 
+"A rarity in this...")]
+(after: 11s)[($say: $wesker, 
+"Grossly imperfect world.")]
+(after: 13s)[($say: $wesker, 
+"I've been developing this bioweapon.")]
+(after: 14s)[($say: $wesker, 
+"UROBOROS")]
+(after: 16s)[($say: $zen, 
+"Not this bs again...")]
+(after: 17s)[($say: $wesker, 
+"UROBOROS will change this world!")]
+(after: 20s)[($say: $wesker, 
+"Has it never occurred to you that this planet is overpopulated?")]
+(after: 22s)[($say: $wesker, 
+"Only a handful of humans truly matter.")]
+(after: 24s)[($say: $wesker, 
+"Everyone else is just so much chaff. ")]
+(after: 25s)[($say: $zen, 
+"everyone else is chaff, so now I have to separate this chaff from the wheat.And withUroboros, I can finally accomplish this!!! ;P")]
+(after: 26s)[($say: $wesker, 
+"Everyone else is just so much chaff. So now I have to separate this chaff from the wheat.")]
+(after: 27s)[($say: $wesker, 
+"Do not interrupt me, chaff.")]
+(after: 29s)[($say: $wesker, 
+"And with Uroboros, I can finally accomplish this.")]
+(after: 31s)[($say: $zen, 
+"He's shared this exact text with us so many times, it's crazy.")]
+(after: 34s)[($say: $zen, 
+"I think he has it archived somewhere, and he'll just C+V it")]
+(after: 36s)[($say: $wesker, 
+"Silence, chaff!")]
+(after: 39s)[$systemnotif[(print: $shinji's name) has entered the chatroom.]]
+  (after: 41s)[($say: $shinji, 
+"Are we gaming this weekend?")]
+(after: 42s) [(b4r:"solid")+(b4r-colour:white)[[gaming?]]]
+
+
 :: What is going on {"position":"1350,1800","size":"100,100"}
 ($say: $player, "What is going on")
 
@@ -407,6 +669,28 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 45s)[($say: $shinji, "See you around.")]
 (after: 47s)[$systemnotif[(print: $shinji's name) has left the chatroom.]]
 (after: 50s)[$systemnotif[(print: $wesker's name) has left the chatroom.]]
+(after: 52s) [(b4r:"solid")+(b4r-colour:white)[[Go to homescreen for the first time.]]]
+
+
+:: Yeah, I ate my favorite snack today! {"position":"1100,2350","size":"100,100"}
+ ($say: $player, "Yeah, I ate my favorite snack today!
+!")
+(after: 2s)[($say: $zen, 
+"Yay!")]
+(after: 4s)[($say: $zen, 
+"I just ate some stuff lol")]
+(after: 7s)[($say: $zen, 
+"It didn't taste very good, but it is good for me;)")]
+(after: 12s)[($say: $zen, 
+"I really want to down a six-pack with a side of chicken lol")]
+(after: 15s)[($say: $zen, 
+"But then I'll lose my six-pack!")]
+
+(after: 16s) [$systemnotif[(print: $wesker) has entered the chatroom.]]
+(after: 18s) [($say: $wesker, 
+"You make me sick.")]
+
+(after: 20s) [(b4r:"solid")+(b4r-colour:white)[[Hello Wesker. Good to see you here.]]		(b4r:"solid")+(b4r-colour:white)[[Zen. Send pics.]]]
 
 
 :: Yeah, I can understand that. {"position":"1200,1275","size":"100,100"}
@@ -467,6 +751,145 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 45s)[($say: $shinji, "See you around.")]
 (after: 47s)[$systemnotif[(print: $shinji's name) has left the chatroom.]]
 (after: 50s)[$systemnotif[(print: $wesker's name) has left the chatroom.]]
+(after: 52s) [(b4r:"solid")+(b4r-colour:white)[[Go to homescreen for the first time.]]]
+
+
+:: You've been really sweet to me, Zen. I'm glad to have met you! {"position":"1725,3125","size":"100,100"}
+ ($say: $player, "You've been really sweet to me, Zen. I'm glad to have met you!
+ ")
+    (after: 2s)[($say: $zen, 
+":)")]
+(after: 4s)[($say: $zen, 
+"me too!")]
+(after: 7s)[($say: $zen, 
+"I don't have that many friends lol")]
+  (after: 9s) [$systemnotif[(print: $wesker's name) has entered the chatroom.]]
+  (after: 11s)[($say: $wesker, 
+"Makes sense.")]
+  (after: 13s)[($say: $zen, 
+"'Makes sense'.")]
+  (after: 17s)[($say: $shinji, 
+"Are we gaming this weekend?")]
+(after: 19s) [(b4r:"solid")+(b4r-colour:white)[[gaming?]]]
+
+
+:: Zen does that?? That sounds worrisome... {"position":"1600,2650","size":"100,100"}
+ ($say: $player, "Zen does that?? That sounds worrisome...
+ ")
+   (after: 2s)[($say: $shinji, 
+"Yeah")]
+   (after: 5s)[($say: $shinji, 
+"His fridge -- beer.")]
+   (after: 7s)[($say: $shinji, 
+"His pantry -- cigarettes")]
+(after: 9s)[($say: $zen, 
+"WAIT")]
+(after: 11s)[($say: $zen, 
+"Not anymore, no.")]
+(after: 13s)[($say: $zen, 
+"I've been healthmaxxing recently.")]
+(after: 15s)[($say: $zen, 
+"Fridge is full of water B)")]
+(after: 17s)[($say: $zen, 
+"Freezer full of lean proteins B)")]
+(after: 19s)[($say: $zen, 
+"Pantry full of brown rice!")]
+(after: 22s)[($say: $zen, 
+"Hey, (print: $name). What do you think of our group so far?")]
+(after: 35s) [(b4r:"solid")+(b4r-colour:white)[[I think Wesker is a little cool.]]		(b4r:"solid")+(b4r-colour:white)[[You've been really sweet to me, Zen. I'm glad to have met you!]]]
+
+
+:: Zen, break a leg! {"position":"1500,3625","size":"100,100"}
+ ($say: $player, "Zen, break a leg!
+ ")
+    (after: 3s)[($say: $zen, 
+"Thanks (print: $name)! I'll imagine your face in the crowd ;)")]
+  (after: 4s) [$systemnotif[(print: $shinji's name) has left the chatroom.]]
+   (after: 6s) [$systemnotif[(print: $zen's name) has left the chatroom.]]
+
+
+(after: 7s) [(b4r:"solid")+(b4r-colour:white)[[Close the chatroom.]]]
+
+
+
+:: Zen. Send pics. {"position":"1200,2600","size":"100,100"}
+ ($say: $player, "Zen. Send pics.
+ ")
+ (after: 2s)[($say: $zen,  
+"omg")]
+ (after: 4s)[($say: $zen,  
+"Yay!")]
+ (after: 5s)[($say: $zen,  
+"I would if I could lol")]
+ (after: 6s)[($say: $zen,  
+"But we can't send pics on this app :(")]
+ (after: 8s)[($say: $zen,  
+"Your interest makes me happy though lol")]
+ (after: 10s)[($say: $zen,  
+"I work really hard on maintaining my health")]
+ (after: 13s)[($say: $zen,  
+"And the natural way, too!")]
+ (after: 15s)[($say: $zen,  
+"Eating right...sleeping...getting excersize...")]
+ (after: 18s)[($say: $zen,  
+"Unlike walking biohazard, Albert Wesker, who just injects himself with random crap and calls it a day")]
+ (after: 21s)[($say: $wesker,  
+"The nonsensical blabber of a dimwitted fool such as you will never hurt me, Zen.")]
+ (after: 23s)[($say: $wesker,  
+"I am a perfect specimen.")]
+ (after: 25s)[($say: $wesker,  
+"So capable, that I have the right to be a god.")]
+ (after: 26s)[($say: $wesker,  
+"The right to be a god...")]
+ (after: 29s)[($say: $zen,  
+"Old man incel")]
+ (after: 30s)[($say: $zen,  
+"shut up")]
+(after: 32s)[$systemnotif[(print: $weskers's name) has left the chatroom.]]
+ (after: 34s)[($say: $zen,  
+"'your words will never hurt me'")]
+(after: 35s) [$systemnotif[(print: $shinji's name) has entered the chatroom.]]
+(after: 37s) [(b4r:"solid")+(b4r-colour:white)[[Hi Shinji -- was hoping you'd come online.]]		(b4r:"solid")+(b4r-colour:white)[[Lol, poor wesky lol]]]
+
+
+:: gaming? {"position":"1600,3450","size":"100,100"}
+ ($say: $player, "gaming?
+ ")
+ 
+  (after: 1s)[($say: $shinji, 
+"Yeah.")]
+  (after: 3s)[($say: $shinji, 
+"It's why we even have this groupchat.")]
+  (after: 6s)[($say: $shinji, 
+"And tolerate each other, I guess.")]
+  (after: 8s)[($say: $zen, 
+"You should join (print: $name)!")]
+  (after: 10s)[($say: $wesker, 
+"It would be nice to have more prawns...")]
+  (after: 12s)[($say: $zen, 
+"prawn")]
+  (after: 13s)[($say: $shinji, 
+"prawn.")]
+  (after: 16s) [$systemnotif[(print: $wesker's name) has left the chatroom.]]
+    (after: 19s)[($say: $zen, 
+"lol, he is so lame")]
+    (after: 21s)[($say: $shinji, 
+"One day he'll come to face it.")]
+      (after: 24s)[($say: $shinji, 
+"That he's really no different from you and me.")]
+    (after: 26s)[($say: $zen, 
+"Crap! Gotta get ready for my gig tonight!")]
+    (after: 28s)[($say: $shinji, 
+"I should head out, also.")]
+(after: 31s) [(b4r:"solid")+(b4r-colour:white)[[Zen, break a leg!]]		(b4r:"solid")+(b4r-colour:white)[[Cya, Shinjiro.]]]
+
+
+:: lol {"position":"1325,3250","size":"100,100"}
+ ($say: $player, "lol
+ ")
+   (after: 3s)[($say: $shinji, 
+"Are we gaming this weekend?")]
+(after: 5s) [(b4r:"solid")+(b4r-colour:white)[[gaming?]]]
 
 
 :: lolol I want to see Zen get beat up by Wesker lol {"position":"1300,1450","size":"100,100"}
