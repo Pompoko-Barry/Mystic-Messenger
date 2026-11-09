@@ -196,10 +196,10 @@ Lying is bad!
 "Everything looking good, still?")]
   (after: 16s)[($say: $shinji, 
 "Yeah.")]
-(after: 18s)[$systemnotif[(print: $weskers's name) has entered the chatroom.]]
+(after: 18s)[$systemnotif[(print: $wesker's name) has entered the chatroom.]]
   (after: 19s)[($say: $wesker, 
 "A shame.")]
-(after: 21s)[$systemnotif[(print: $weskers's name) has left the chatroom.]]
+(after: 21s)[$systemnotif[(print: $wesker's name) has left the chatroom.]]
   (after: 24s)[($say: $zen, 
 "Man, Wesker is so full of it.")]
   (after: 24s)[($say: $zen, 
@@ -483,7 +483,8 @@ What is your name?
 
 (set: $player to (dm:
 "name", "You",
-"color", "#ffffff"
+"color", "#ffffff",
+"side", "right"
 ))
 
 (set: $systemnotif to (css: 
@@ -589,7 +590,7 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 "Old man incel")]
  (after: 30s)[($say: $zen,  
 "shut up")]
-(after: 32s)[$systemnotif[(print: $weskers's name) has left the chatroom.]]
+(after: 32s)[$systemnotif[(print: $wesker's name) has left the chatroom.]]
  (after: 34s)[($say: $zen,  
 "'your words will never hurt me'")]
 (after: 35s) [$systemnotif[(print: $shinji's name) has entered the chatroom.]]
@@ -673,8 +674,7 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 
 
 :: Yeah, I ate my favorite snack today! {"position":"1100,2350","size":"100,100"}
- ($say: $player, "Yeah, I ate my favorite snack today!
-!")
+ ($say: $player, "Yeah, I ate my favorite snack today!")
 (after: 2s)[($say: $zen, 
 "Yay!")]
 (after: 4s)[($say: $zen, 
@@ -686,7 +686,7 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 15s)[($say: $zen, 
 "But then I'll lose my six-pack!")]
 
-(after: 16s) [$systemnotif[(print: $wesker) has entered the chatroom.]]
+(after: 16s) [$systemnotif[(print: $wesker's name) has entered the chatroom.]]
 (after: 18s) [($say: $wesker, 
 "You make me sick.")]
 
@@ -845,7 +845,7 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 "Old man incel")]
  (after: 30s)[($say: $zen,  
 "shut up")]
-(after: 32s)[$systemnotif[(print: $weskers's name) has left the chatroom.]]
+(after: 32s)[$systemnotif[(print: $wesker's name) has left the chatroom.]]
  (after: 34s)[($say: $zen,  
 "'your words will never hurt me'")]
 (after: 35s) [$systemnotif[(print: $shinji's name) has entered the chatroom.]]

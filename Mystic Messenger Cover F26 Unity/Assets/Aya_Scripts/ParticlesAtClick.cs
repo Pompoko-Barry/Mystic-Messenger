@@ -13,7 +13,7 @@ public class ParticlesAtClick : MonoBehaviour
 
     private void Awake()
     {
-        _mainCamera = Camera.main;
+       // _mainCamera = Camera.main;
     }
     
    void Update ()
@@ -23,10 +23,13 @@ public class ParticlesAtClick : MonoBehaviour
     if (pointer == null || !pointer.press.wasPressedThisFrame)
         return;
 
+    Camera cam = Camera.main;
+    if (cam == null) return;
+
     // Screen postion + a distance in front of the camera = a point in the unity/visible space
     Vector3 screenPos = pointer.position.ReadValue();
     screenPos.z = distanceFromCamera;
-    Vector3 worldPos = _mainCamera.ScreenToWorldPoint(screenPos);
+    Vector3 worldPos = cam.ScreenToWorldPoint(screenPos);
 
     // A new copy of the prefab for every click
     ParticleSystem burst = Instantiate(clickParticlesPrefab, worldPos, Quaternion.identity);
