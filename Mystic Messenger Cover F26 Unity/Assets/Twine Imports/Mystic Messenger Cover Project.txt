@@ -61,6 +61,26 @@ Mystic Messenger Cover Project
 (after: 9s) [(b4r:"solid")+(b4r-colour:white)[[Yeah, I ate my favorite snack today!]]		(b4r:"solid")+(b4r-colour:white)[[Haven't eaten yet, today lol]]]
 
 
+:: Chat3 Start {"position":"1575,3950","size":"100,100"}
+  (after: 1s) [$systemnotif[(print: $wesker's name) has been in the chatroom for three hours by himself.]]
+    (after: 5s)[($say: $wesker, 
+"When are we gamimg.")]
+    (after: 8s)[($say: $wesker, 
+"''When are we gaming (text-colour:#14ff30)[@everyone]''")]
+(after: 10s) [$systemnotif[(print: $zen's name) has entered the chatroom.]]
+(after: 11s) [$systemnotif[(print: $name) has entered the chatroom.]]
+(after: 14s) [$systemnotif[(print: $shinji's name) has entered the chatroom.]]
+    (after: 16s)[($say: $zen, 
+"I am free now.")]
+    (after: 18s)[($say: $shinji, 
+"aame")]
+    (after: 20s)[($say: $shinji, 
+"Same.")]
+
+(after: 22s) [(b4r:"solid")+(b4r-colour:white)[[me 2]]		(b4r:"solid")+(b4r-colour:white)[[I am ready to play]]]
+
+
+
 :: Choose to input name. {"position":"875,575","size":"100,100"}
 What is your name?
 
@@ -85,6 +105,23 @@ What is your name?
 
 (after: 7s) [(b4r:"solid")+(b4r-colour:white)[[Close the chatroom.]]]
 
+
+
+:: Do I look how you expected? {"position":"1800,4600","size":"100,100"}
+($say: $zen, "Better!")
+($say: $zen, "Way better!")
+($say: $zen, "You make me look-")
+($say: $narrator, "Zen pauses, and seems to lose his track of thought, before quickly returning to his gentle smile.") 
+($say: $zen, "You and me are a good match! We're both extremely attractive and beautiful together!")
+($say: $zen, "Did that come off as weird?")
+($say: $zen, "I'm actually kinda insecure about the way I look...")
+($say: $zen, "When I was a kid I thought I was too ugly for this world.")
+($say: $zen, "It's what my mom told me.")
+($say: $zen, "So now I overcompensate with the self-hype... ")
+($say: $zen, "Not that it's an excuse to be a jerk or anything!")
+($say: $zen, "Gosh--what am I even saying?! I feel like I telling you too many things (laughing).")
+($say: $zen, "Anyways, you ready to get your game on?")
+($say: $narrator, "''ZEN END (a new friend for life?)''") 
 
 
 :: First Messages(start) {"position":"1025,725","size":"100,100"}
@@ -145,7 +182,7 @@ What is your name?
 (after: 7s) [($say: $zen, 
 "Yeah, love you too, Wesker.")]
 (after: 9s) [($say: $zen, 
-"Gosh, you are such a JERK!")]
+"Gosh, you are such a ''(text-colour:red)[JERK]''!")]
 (after: 12s) [(b4r:"solid")+(b4r-colour:white)[[Wesker is being a little mean...]]		(b4r:"solid")+(b4r-colour:white)[[No, Zen. Wesker only speaks the truth.]]]
 
 
@@ -153,17 +190,17 @@ What is your name?
 :: Hello! {"position":"1025,850","size":"100,100"}
 ($say: $player, "Hello!")
 (after: 2s)[($say: $zen, 
-"Oh, they are kinda cute lol")]
+"(text-colour:magenta)[Oh, they seem kinda cute lol]")]
 (after: 3s)[($say: $zen, 
 "I hope I'm their type. Cuffing season is coming up soon.")]
 (after: 6s)[($say: $wesker, 
 "It's depressing to think that this beast of a creature and I are of the same species.")]
 (after: 7s)[($say: $wesker, 
-"Zen -- you are ever so disappointing.")]
+"Zen -- you are ever ''so disappointing''.")]
 (after: 10s)[($say: $zen, 
 "Ugh, Wesker. You are always so arrogant and full of it. Just thinking of your ugly mug pisses me off.")]
 (after: 12s)[($say: $zen, 
-"Don't be shy Albert! I know you're just jealous of my superior looks! All that genetic modification, and 100% natural me still mogs you 24/7 <3")]
+"''(text-colour:magenta)[Don't be shy Albert! I know you're just jealous of my superior looks! All that genetic modification, and 100% natural me still mogs you 24/7 <3]''")]
 (after: 14s)[($say: $wesker, 
 "Oh, poor Zen...Always so foolish.")]
 (after: 17s)[($say: $zen, 
@@ -242,6 +279,43 @@ What is your name?
 (after: 42s) [(b4r:"solid")+(b4r-colour:white)[[An international super spy here to take over the world.]]		(b4r:"solid")+(b4r-colour:white)[[No one special, or important. At least not yet, hopefully.]]]
 
 
+:: I am ready to play {"position":"1625,4125","size":"100,100"}
+      ($say: $player, "I am ready to play
+
+ ")
+   (after: 2s)[($say: $zen, 
+"Since we have (text-colour:purple)[4] people now")]
+    (after: 4s)[($say: $zen, 
+"Should we split into teams of two?")]
+    (after: 7s)[($say: $shinji, 
+"Sounds good")]
+  (after: 10s)[($say: $shinji, 
+"How we splittin?")]
+  (after: 12s)[($say: $zen, 
+"Let's let (print: $name) choose who they want to partner with lol")]
+  (after: 15s)[($say: $zen, 
+"(text-colour:magenta)+(bg:black)[It //is// thanks to them, we can finally try this out]")]
+  (after: 18s)[($say: $wesker, 
+"Teammates? There is no 'I' in team.")]
+  (after: 20s)[($say: $wesker, 
+"There's either //my// side, or the losing one.")]
+  (after: 22s)[($say: $shinji, 
+"okay...")]
+  (after: 24s)[($say: $zen, 
+"Don't get too competitive again, you dunce")]
+  (after: 27s)[($say: $zen, 
+"I'll never forget having to help you get a new laptop")]
+  (after: 30s)[($say: $zen, 
+"After you kept losing rounds, and eventually smashed your device into little bits")]
+  (after: 33s)[($say: $shinji, 
+"For a guy so (text-colour:navy)[smart], you sure do throw a lot of tantrums")]
+
+(after: 36s) [(b4r:"solid")+(b4r-colour:white)[[Partner with Shinji]]		(b4r:"solid")+(b4r-colour:white)[[Partner with Zen]]	(b4r:"solid")+(b4r-colour:white)[[Partner with Wesker]]]
+
+
+
+
+
 :: I think Wesker is a little cool. {"position":"1525,3150","size":"100,100"}
  ($say: $player, "I think Wesker is a little cool.
  ")
@@ -265,6 +339,12 @@ What is your name?
 
 
 
+
+
+:: I'm already bored {"position":"1300,4650","size":"100,100"}
+($say: $narrator, "Shinjiro gives no obvious reaction.") 
+($say: $narrator, "Shinjiro never speaks up again after that.") 
+($say: $narrator, "''BORING END '' (why were you mean for no reason)") 
 
 
 :: Insert Name [nameinput] {"position":"700,450","size":"100,100"}
@@ -299,7 +379,7 @@ What is your name?
  (after: 15s)[($say: $wesker, 
 "An ascended human, the one who wields the right to be a god.")]
 (after: 18s)[($say: $wesker, 
-"And I didn't leave because it hurt my feelings")]
+"Annd I didnm;t leave becasue it hurt my feelings")]
  (after: 20s)[($say: $zen, 
 "lol he had a typo")]
  (after: 22s)[($say: $shinji, 
@@ -333,6 +413,17 @@ What is your name?
 "You get where I'm coming from (print: $name)?")]
 
 (after: 23s) [(b4r:"solid")+(b4r-colour:white)[[Yeah, I can understand that.]]		(b4r:"solid")+(b4r-colour:white)[[No, I think you're off-putting. Kind of a delusional loser.]]]
+
+
+:: No, I think you're cool {"position":"1125,4650","size":"100,100"}
+($say: $narrator, "You think you can notice a slight smile on Shinjiro's face. His body language seems to relax a little.") 
+($say: $shinji, "Oh yeah? Thanks.")
+($say: $shinji, "You been eating anything good recently?")
+($say: $shinji, "Zen eats like shit.")
+($say: $shinji, "If you get the chance -- can you remind him to eat fresh fruits and vegetables? And something sweet or indulgent every now and then?")
+($say: $shinji, "He won't listen if it's me.")
+
+[[Okey-dokey]]
 
 
 :: No, I think you're off-putting. Kind of a delusional loser. {"position":"1550,1325","size":"100,100"}
@@ -438,6 +529,51 @@ What is your name?
 (after: 44s) [(b4r:"solid")+(b4r-colour:white)[[You guys are funny lol]]		(b4r:"solid")+(b4r-colour:white)[[What is going on]]]
 
 
+:: Okay. {"position":"1950,4600","size":"100,100"}
+($say: $narrator, "Zen's face flashes with confused sadness, but quickly returns to his relaxed smile.") 
+($say: $zen, "I didn't mean it in a bad way!")
+($say: $zen, "I like how you look!")
+($say: $narrator, "Zen laughs awkwardly.") 
+
+[[You're so narcisstic and full of yourself.]]
+
+
+:: Okey-dokey {"position":"1200,4800","size":"100,100"}
+($say: $narrator, "Shinjiro laughs quietly.")
+($say: $shinji, "'Okey-dokey?'")
+($say: $shinji, "I didn't mean to laugh -- it just came out of me.")
+($say: $narrator, "Shinjiro pauses for a moment.")
+($say: $shinji, "Sorry if I've been acting too serious.")
+($say: $shinji, "I'm not the best at making people feel welcome.")
+($say: $shinji, "Zen is pretty good at it though.")
+($say: $shinji, "I hope I didn't sour your experience too much.")
+($say: $shinji, "You seem like the understanding type.")
+($say: $narrator, "Shinjiro suddenly seems embarassed.") 
+($say: $shinji, "You're easy to talk to.")
+($say: $shinji, "I'm glad that I met you.")
+($say: $narrator, "SHINJIRO END (You can feel him warming up)") 
+
+
+:: Partner with Shinji {"position":"1350,4300","size":"100,100"}
+[[You partner up with Shinji, and start a video call with him]]
+(set: $gameState to "EndingShinji")
+
+
+
+:: Partner with Wesker {"position":"1550,4300","size":"100,100"}
+[[You partner up with Wesker, and start a video call with him]] 
+(set: $gameState to "EndingWesker")
+
+
+
+:: Partner with Zen {"position":"1750,4300","size":"100,100"}
+[[You partner up with Zen, and start a video call with him]] 
+(set: $gameState to "EndingZen")
+
+
+
+
+
 :: Refuse to input name. {"position":"700,575","size":"100,100"}
 ($say: $system, 
 "Why?")
@@ -494,6 +630,7 @@ What is your name?
 (set: $player to (dm:
 "name", "You",
 "color", "#ffffff",
+"avatar", "player",
 "side", "right"
 ))
 
@@ -555,9 +692,9 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 25s)[($say: $zen, 
 "Shinjiro...")]
 (after: 27s)[($say: $zen, 
-"You're gonna make me blush <3")]
+"(text-colour:magenta)[You're gonna make me blush <3]")]
 (after: 30s)[($say: $shinji, 
-"No thanks.")]
+"''No thanks.''")]
 (after: 33s)[($say: $zen, 
 "But hey, Shinjiro. Didn't you also spend your highschool years being independent?")]
 (after: 36s)[($say: $shinji, 
@@ -567,10 +704,29 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 41s)[($say: $zen, 
 "You grew up in a cushy house with some posh education that clearly did you no good.")]
 (after: 44s)[($say: $wesker, 
-"Yes, yes. I did have a superior upbringing.")]
+"Yes, yes. I did have a ''superior'' upbringing.")]
 (after: 44s)[($say: $wesker, 
 "I've been perfectly crafted since the start.")]
 (after: 46s) [(b4r:"solid")+(b4r-colour:white)[[You guys are funny lol]]		(b4r:"solid")+(b4r-colour:white)[[What is going on]]]
+
+
+:: Understood. {"position":"1550,4650","size":"100,100"}
+($say: $wesker, "Excellent.")
+($say: $wesker, "You stick to the high ground. I handle everything else.")
+($say: $wesker, "Understood?")
+($say: $wesker, "Don't waste your time responding. You still being here is indicative of your understanding.")
+($say: $wesker, "Shinji just messaged me and asked 'what's the holdup'")
+($say: $wesker, "We will win. But, do not get careless.")
+($say: $narrator, "With Wesker's impeccable and passionate guidance...") 
+($say: $narrator, "You lost 7-0!") 
+($say: $narrator, "But it was fun!") 
+($say: $narrator, "WESKER END (he's pretty funny)") 
+
+
+
+
+
+
 
 
 :: Wesker is being a little mean... {"position":"1025,2750","size":"100,100"}
@@ -608,7 +764,7 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 
 
 :: Wesker swiftly ended your mortal existence. {"position":"825,1625","size":"100,100"}
-($say: $narrator, "BAD END (you lied to Wesker)") 
+($say: $narrator, "''BAD END (you lied to Wesker)''") 
 
 
 
@@ -664,9 +820,9 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 :: What is going on {"position":"1350,1800","size":"100,100"}
 ($say: $player, "What is going on")
 
-(after: 2s)[($say: $wesker, "This is MysticMessenger Cover Project 2026 by Pompoko Barry")]
+(after: 2s)[($say: $wesker, "(text-colour:red)[This is MysticMessenger Cover Project 2026 by Pompoko Barry]")]
 (after: 5s)[($say: $wesker, "Are you too slow to even understand that?")]
-(after: 8s)[($say: $wesker, "I expected more from you.")]
+(after: 8s)[($say: $wesker, "(text-colour:red)+(bg:black)[''I expected more from you.'']")]
 (after: 11s)[($say: $wesker, "So, so disappointing.")]
 (after: 15s)[($say: $wesker, "(print: $name) you are incredibly slow.")]
 (after: 18s)[($say: $shinji, "Wesker, lay off them.")]
@@ -716,13 +872,13 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 3s)[($say: $wesker, 
 "How dissapointing (print: $name). To relate to the likes of Zen MysticMessenger...")]
 (after: 6s)[($say: $zen, 
-"Ignore him (print: $name). He's just a pompous lame boomer who thinks he is the shit, but actually he is just shit.")]
+"Ignore him (print: $name). He's just a pompous lame boomer who thinks he is the shit, but actually he is (text-colour:#a61e4d)[just shit].")]
 (after: 8s)[($say: $zen, 
 "If he ever makes you sad, come to me right away!")]
 (after: 10s)[($say: $zen, 
-"I'll beat that jerk up for you.")]
+"(text-colour:#0b7285)[I'll beat that jerk up for you.]")]
 (after: 13s)[($say: $wesker, 
-"I'd like to see you try.")]
+"''I'd like to see you try.''")]
 
 
 (after: 16s) [(b4r:"solid")+(b4r-colour:white)[[Thanks Zen MysticMessenger!]]		(b4r:"solid")+(b4r-colour:white)[[lolol I want to see Zen get beat up by Wesker lol]]]
@@ -794,6 +950,51 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 52s) [(b4r:"solid")+(b4r-colour:white)[[Go to homescreen for the first time.]]]
 
 
+:: You partner up with Shinji, and start a video call with him {"position":"1200,4450","size":"100,100"}
+($say: $narrator, "The video call opens up and you see a scruffy looking guy austere gaze.") 
+($say: $shinji, "Hi (print: $name).")
+($say: $shinji, "Thanks for choosing me.")
+($say: $shinji, "I hope I don't bore you.")
+[[No, I think you're cool]] [[I'm already bored]]
+
+
+:: You partner up with Wesker, and start a video call with him {"position":"1550,4500","size":"100,100"}
+($say: $narrator, "The video call opens up and you see Albert Wesker.") 
+($say: $wesker, "Greetings.")
+($say: $wesker, "You look well.")
+($say: $wesker, "Here's your mission --")
+($say: $wesker, "Annihilate the competiton.")
+[[Understood.]]
+
+
+
+
+
+
+:: You partner up with Zen, and start a video call with him {"position":"1825,4450","size":"100,100"}
+($say: $narrator, "The video call opens up and you see the most handsome motherfucker in the mutherfreaking world so handsome (imagine that it's the most handsome beautiful person ever, and not an anime-boy png)") 
+($say: $narrator, "They have a relaxed smile, and their body language is calm.") 
+($say: $zen, "Hi (print: $name)!")
+($say: $zen, "Sorry if I'm staring.")
+($say: $zen, "It's always weird realizing that your internet friend is actually a real person!")
+
+[[Do I look how you expected?]] [[Okay.]]
+
+
+:: You're so narcisstic and full of yourself. {"position":"1925,4750","size":"100,100"}
+($say: $narrator, "Zen continues smiling despite your critique of him") 
+($say: $zen, "Yeah-")
+($say: $narrator, "Zen takes a brief pause before continuing") 
+($say: $zen, "Well it's hard to not compliment myself so much, when I'm just this beautiful!")
+($say: $zen, "Gosh, God must've made a mistake when creating me...how can one person hold so much beauty...")
+($say: $zen, "All attention must be on me.")
+($say: $zen, "At all times -- since I'm so out-of-this-world gorgeous!")
+($say: $narrator, "He looks a little sad.") 
+($say: $narrator, "Zen was really quiet during the gaming session.") 
+($say: $narrator, "[''YOU DON'T LIKE ZEN, BUT CHOSE HIM ANYWAYS END (why??)'']") 
+
+
+
 :: You've been really sweet to me, Zen. I'm glad to have met you! {"position":"1725,3125","size":"100,100"}
  ($say: $player, "You've been really sweet to me, Zen. I'm glad to have met you!
  ")
@@ -860,7 +1061,7 @@ padding: 0.4em 0; margin: 0.8em 0;"))
  (after: 4s)[($say: $zen,  
 "Yay!")]
  (after: 5s)[($say: $zen,  
-"I would if I could lol")]
+"''I would if I could lol''")]
  (after: 6s)[($say: $zen,  
 "But we can't send pics on this app :(")]
  (after: 8s)[($say: $zen,  
@@ -954,9 +1155,9 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 25s)[($say: $zen, 
 "Shinjiro...")]
 (after: 27s)[($say: $zen, 
-"You're gonna make me blush <3")]
+"(text-colour:magenta)[You're gonna make me blush <3]")]
 (after: 30s)[($say: $shinji, 
-"No thanks.")]
+"''No thanks.''")]
 (after: 33s)[($say: $zen, 
 "But hey, Shinjiro. Didn't you also spend your highschool years being independent?")]
 (after: 36s)[($say: $shinji, 
@@ -966,10 +1167,46 @@ padding: 0.4em 0; margin: 0.8em 0;"))
 (after: 41s)[($say: $zen, 
 "You grew up in a cushy house with some posh education that clearly did you no good.")]
 (after: 44s)[($say: $wesker, 
-"Yes, yes. I did have a superior upbringing.")]
+"Yes, yes. I did have a ''superior'' upbringing.")]
 (after: 45s)[($say: $wesker, 
 "I've been perfectly crafted since the start.")]
 (after: 47s) [(b4r:"solid")+(b4r-colour:white)[[You guys are funny lol]]		(b4r:"solid")+(b4r-colour:white)[[What is going on]]]
+
+
+:: me 2 {"position":"1475,4125","size":"100,100"}
+   ($say: $player, "me 2
+ ")
+  (after: 2s)[($say: $zen, 
+"Since we have (text-colour:purple)[4] people now")]
+    (after: 4s)[($say: $zen, 
+"Should we split into teams of two?")]
+    (after: 7s)[($say: $shinji, 
+"Sounds good")]
+  (after: 10s)[($say: $shinji, 
+"How we splittin?")]
+  (after: 12s)[($say: $zen, 
+"Let's let (print: $name) choose who they want to partner with lol")]
+  (after: 15s)[($say: $zen, 
+"(text-colour:magenta)+(bg:black)[It //is// thanks to them, we can finally try this out]")]
+  (after: 18s)[($say: $wesker, 
+"Teammates? There is no 'I' in team.")]
+  (after: 20s)[($say: $wesker, 
+"There's either //my// side, or the losing one.")]
+  (after: 22s)[($say: $shinji, 
+"okay...")]
+  (after: 24s)[($say: $zen, 
+"Don't get too competitive again, you dunce")]
+  (after: 27s)[($say: $zen, 
+"I'll never forget having to help you get a new laptop")]
+  (after: 30s)[($say: $zen, 
+"After you kept losing rounds, and eventually smashed your device into little bits")]
+  (after: 33s)[($say: $shinji, 
+"For a guy so (text-colour:navy)[smart], you sure do throw a lot of tantrums")]
+
+(after: 36s) [(b4r:"solid")+(b4r-colour:white)[[Partner with Shinji]]		(b4r:"solid")+(b4r-colour:white)[[Partner with Zen]]	(b4r:"solid")+(b4r-colour:white)[[Partner with Wesker]]]
+
+
+
 
 
 :: StoryStylesheet [stylesheet]

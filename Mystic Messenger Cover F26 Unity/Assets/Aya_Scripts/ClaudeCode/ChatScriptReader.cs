@@ -384,6 +384,37 @@ namespace SimpleTwineDialogue
         static readonly Regex OtherHookRegex = new Regex(
             @"\((?!(?:text-colou?r|colou?r):)[\w-]+:(?:[^()""]|""[^""]*"")*\)\s*\[(?<t>[^\[\]]*)\]");
 
+        // Harlowe's built-in colour names, as hex codes TextMeshPro understands.
+        // TextMeshPro only knows a few colour names itself, so names like "magenta" would show as text.
+        static readonly Dictionary<string, string> HarloweColours = new Dictionary<string, string>
+        {
+            { "red", "#e61919" },     { "orange", "#e68019" },  { "yellow", "#e5e619" },
+            { "lime", "#80e619" },    { "green", "#19e619" },   { "cyan", "#19e5e6" },
+            { "aqua", "#19e5e6" },    { "blue", "#197fe6" },    { "navy", "#1919e6" },
+            { "purple", "#7f19e6" },  { "magenta", "#e619e5" }, { "fuchsia", "#e619e5" },
+            { "white", "#ffffff" },   { "black", "#000000" },   { "grey", "#888888" },
+            { "gray", "#888888" }
+        };
+
+        /// <summary>
+        /// Turns a Harlowe colour ("magenta", "#f0a", "#ff00aa") into a #RRGGBB code for TextMeshPro.
+        /// Returns null if the colour isn't recognised.
+        /// </summary>
+        static string ToTmpColor(string colour)
+        {
+            colour = colour.Trim().ToLowerInvariant();
+
+            if (colour.StartsWith("#"))
+            {
+                // Short form #rgb → #rrggbb
+                if (colour.Length == 4)
+                    return "#" + colour[1] + colour[1] + colour[2] + colour[2] + colour[3] + colour[3];
+                return colour;
+            }
+
+            return HarloweColours.TryGetValue(colour, out var hex) ? hex : null;
+        }
+
         static readonly Regex BoldRegex = new Regex(@"(?:\*\*|'')(?<t>.+?)(?:\*\*|'')");
         static readonly Regex ItalicRegex = new Regex(@"(?:(?<!/)//|\*)(?<t>[^*]+?)(?://|\*)");
 
@@ -400,7 +431,12 @@ namespace SimpleTwineDialogue
             do
             {
                 before = text;
-                text = ColourHookRegex.Replace(text, m => $"<color={m.Groups["c"].Value}>{m.Groups["t"].Value}</color>");
+                text = ColourHookRegex.Replace(text, m =>
+                {
+                    string hex = ToTmpColor(m.Groups["c"].Value);
+                    // Unknown colour name: keep the words, drop the colour, so no tag shows as text.
+                    return hex == null ? m.Groups["t"].Value : $"<color={hex}>{m.Groups["t"].Value}</color>";
+                });
                 text = OtherHookRegex.Replace(text, m => m.Groups["t"].Value);
             } while (text != before);
 
